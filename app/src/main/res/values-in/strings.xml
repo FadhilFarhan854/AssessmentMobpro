@@ -14,7 +14,7 @@
     <string name="akun2">Sudah punya akun ?</string>
     <string name="register">Daftar</string>
     <string name="login">Login</string>
-    <string name="aboutApp">"Aplikasi ini adalah aplikasi catatan keuangan. melihat banyaknya orang yang membutuhkan aplikasi pencatanan uang, maka aplikasi ini dibuat. aplikasi ini juga dibuat guna memenuhi persyaratan persyaratan untuk assessment 1 matkul mobile programing. semua fitur dan kebutuhan telah disesuaikan dengan persyaratan assessment ini. Semua source code dari aplikasi ini bisa di share via Whatsaap dan akan dia arahkan ke github. "</string>
+    <string name="aboutApp">"Aplikasi ini adalah aplikasi catatan keuangan. melihat banyaknya orang yang membutuhkan aplikasi pencatanan uang, maka aplikasi ini dibuat. aplikasi ini juga dibuat guna memenuhi persyaratan persyaratan untuk assessment 1 matkul mobile programing. semua fitur dan kebutuhan telah disesuaikan dengan persyaratan assessment ini. Semua source code dari aplikasi ini bisa di share via Whatsapp dan akan dia arahkan ke github. "</string>
     <string name="bagikan">Bagikan</string>
     <string name="financial">Catatan Keuangan</string>
 </resources>

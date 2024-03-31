@@ -12,10 +12,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -45,7 +47,16 @@ import org.d3if0739.assessment.ui.theme.AssessmentTheme
 fun RegisterScreen(navController : NavHostController){
     Scaffold (
         topBar = {
-            TopAppBar(title = { Text(text = stringResource(id = R.string.register))},
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = stringResource(id = R.string.kembali),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                },
+                title = { Text(text = stringResource(id = R.string.register))},
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary
@@ -138,15 +149,7 @@ fun RegisterForm(onHaveAccount: () -> Unit,
         ) {
             Text(text = stringResource(R.string.register))
         }
-        Text(stringResource(R.string.akun2))
-        ClickableText(
-            text = AnnotatedString(stringResource(R.string.login)),
 
-            onClick = {
-                onHaveAccount()
-
-            }
-        )
     }
 }
 
