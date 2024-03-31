@@ -88,7 +88,7 @@ fun ScreenAbout(){
         )
         Button( onClick = { shareData(
             context = context,
-            message = "test"
+            message = "https://github.com/FadhilFarhan854/AssessmentMobpro"
         ) },
                 modifier = Modifier.padding(top = 8.dp),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)

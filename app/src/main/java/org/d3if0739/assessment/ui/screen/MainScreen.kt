@@ -195,8 +195,9 @@ fun ScreenContent(/*viewModel: MainViewModel*/){
                 if (jumlahError || tanggalError) return@Button
                 jenis = getJenis( option == inputOptions[0] )
                 val jenisValue = getJenis( option == inputOptions[0])
+                val formattedDate = tanggal.replace(Regex("(\\d{2})(\\d{2})(\\d{4})"), "$1/$2/$3")
 //                viewModel.addData(tanggal, jenisValue, jumlah)
-                datas.add(Keuangan(tanggal, jenisValue, jumlah))
+                datas.add(Keuangan(formattedDate, jenisValue, jumlah))
                 tanggal = ""
                 jumlah = ""
 
