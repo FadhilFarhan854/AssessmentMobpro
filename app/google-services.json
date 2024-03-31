@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "336658519955",
+    "project_id": "catatankeuangan-73ba2",
+    "storage_bucket": "catatankeuangan-73ba2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:336658519955:android:01bdbd01b9052306b47a66",
+        "android_client_info": {
+          "package_name": "org.d3if0739.assessment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9Cmstg0TOL0m7WS2va1lItyr5s8HcCFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
