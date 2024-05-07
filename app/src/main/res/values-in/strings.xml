@@ -17,4 +17,15 @@
     <string name="aboutApp">"Aplikasi ini adalah aplikasi catatan keuangan. melihat banyaknya orang yang membutuhkan aplikasi pencatanan uang, maka aplikasi ini dibuat. aplikasi ini juga dibuat guna memenuhi persyaratan persyaratan untuk assessment 1 matkul mobile programing. semua fitur dan kebutuhan telah disesuaikan dengan persyaratan assessment ini. Semua source code dari aplikasi ini bisa di share via Whatsapp dan akan dia arahkan ke github. "</string>
     <string name="bagikan">Bagikan</string>
     <string name="financial">Catatan Keuangan</string>
+    <string name="list_kosong">List kosong</string>
+    <string name="x_diklik">%1$s di klik</string>
+    <string name="tambah_catatan">Tambah catatan</string>
+    <string name="tambah_error">belum bisa tambah  catatan</string>
+    <string name="edit_catatan">Ubah Catatan</string>
+    <string name="simpan">Simpan</string>
+    <string name="lainya">Opsi lainya</string>
+    <string name="hapus">"hapus catatan "</string>
+    <string name="tombol_batal">Batal</string>
+    <string name="pesan_hapus">Hapus Catatan keuangan ini ?</string>
+    <string name="tombol_hapus">Hapus</string>
 </resources>
