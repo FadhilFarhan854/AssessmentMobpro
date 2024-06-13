@@ -36,4 +36,8 @@
     <string name="profil">Profile</string>
     <string name="tutup">Close</string>
     <string name="logout">Logout</string>
+    <string name="tambah_keuangan">Add Note</string>
+    <string name="jenis">Income / Expense</string>
+    <string name="offline_mode">Offline Mode</string>
+
 </resources>
