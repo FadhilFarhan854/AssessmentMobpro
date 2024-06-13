@@ -31,4 +31,9 @@
     <string name="list" translatable="false">Tampilan list</string>
     <string name="grid" translatable="false">Tampilan grid</string>
     <string name="gambar">Image</string>
+    <string name="error">Failed to load data, connection error</string>
+    <string name="try_again">Try again</string>
+    <string name="profil">Profile</string>
+    <string name="tutup">Close</string>
+    <string name="logout">Logout</string>
 </resources>

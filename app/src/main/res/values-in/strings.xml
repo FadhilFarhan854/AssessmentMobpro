@@ -29,4 +29,9 @@
     <string name="pesan_hapus">Hapus Catatan keuangan ini ?</string>
     <string name="tombol_hapus">Hapus</string>
     <string name="gambar">gambar</string>
+    <string name="error">Gagal memuat data, koneksi error...</string>
+    <string name="try_again">Coba lagi</string>
+    <string name="profil">Profil</string>
+    <string name="tutup">Tutup</string>
+    <string name="logout">Logout</string>
 </resources>
