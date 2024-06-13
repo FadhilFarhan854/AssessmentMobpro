@@ -13,16 +13,20 @@ import org.d3if0739.assessment.ui.screen.KEY_ID_CATATAN
 import org.d3if0739.assessment.ui.screen.LoginScreen
 import org.d3if0739.assessment.ui.screen.MainScreen
 import org.d3if0739.assessment.ui.screen.MainViewModel
+import org.d3if0739.assessment.ui.screen.OnlineModeScreen
 import org.d3if0739.assessment.ui.screen.RegisterScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()){
     NavHost(
         navController = navController ,
-        startDestination = Screen.MainScreen.route
+        startDestination = Screen.OnlineMode.route
         ){
         composable(route = Screen.Login.route){
             LoginScreen(navController = navController)
+        }
+        composable(route = Screen.OnlineMode.route){
+            OnlineModeScreen(navController)
         }
         composable(route = Screen.Register.route){
             RegisterScreen(navController)

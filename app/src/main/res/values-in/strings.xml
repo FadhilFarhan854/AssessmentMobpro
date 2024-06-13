@@ -28,4 +28,5 @@
     <string name="tombol_batal">Batal</string>
     <string name="pesan_hapus">Hapus Catatan keuangan ini ?</string>
     <string name="tombol_hapus">Hapus</string>
+    <string name="gambar">gambar</string>
 </resources>
