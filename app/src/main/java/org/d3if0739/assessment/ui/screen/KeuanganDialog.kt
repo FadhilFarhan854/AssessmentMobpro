@@ -12,7 +12,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -54,6 +57,15 @@ fun KeuanganDialog(
     var jenis by remember {
         mutableStateOf("")
     }
+    var tanggalError by  remember{
+        mutableStateOf(false)
+    }
+    var jenisError by  remember{
+        mutableStateOf(false)
+    }
+    var jumlahError by  remember{
+        mutableStateOf(false)
+    }
     Dialog(onDismissRequest = { onDismissRequest() }) {
         Card(
             modifier = Modifier.padding(16.dp),
@@ -80,6 +92,9 @@ fun KeuanganDialog(
                         imeAction = ImeAction.Next,
                         keyboardType = KeyboardType.Number
                     ),
+                    isError = tanggalError,
+                    trailingIcon = {IconPickerOnline(isError = tanggalError, "" )},
+                    supportingText = {ErrorhintTanggal(tanggalError)},
                     modifier = Modifier.padding(top = 8.dp)
 
                 )
@@ -94,7 +109,10 @@ fun KeuanganDialog(
                         keyboardType = KeyboardType.Number
 
                     ),
-                    modifier = Modifier.padding(top = 8.dp)
+                    isError = jumlahError,
+                    trailingIcon = {IconPickerOnline(isError = jumlahError, "" )},
+                    supportingText = { ErrorhintJumlah(jumlahError) },
+
 
                 )
                 OutlinedTextField(
@@ -106,7 +124,10 @@ fun KeuanganDialog(
                         capitalization = KeyboardCapitalization.Sentences,
                         imeAction = ImeAction.Done
                     ),
-                    modifier = Modifier.padding(top = 8.dp)
+                    isError = jenisError,
+                    trailingIcon = {IconPickerOnline(isError = jenisError, "" )},
+                    supportingText = { ErrorhintJEnis(jenisError) },
+
 
                 )
 
@@ -123,12 +144,19 @@ fun KeuanganDialog(
                         Text(text = stringResource(R.string.tombol_batal))
                     }
                     OutlinedButton(
-                        onClick = { onConfirmation(tanggal, jumlah, jenis) },
+                        onClick = {
+                            tanggalError = (tanggal == "" || tanggal.length > 10 || tanggal.length < 8)
+                            jumlahError = (jumlah == "")
+                            jenisError = (jenis == "")
+                            if(tanggalError || jenisError || jumlahError) return@OutlinedButton
+                            onConfirmation(tanggal, jumlah, jenis) },
                         enabled = tanggal.isNotEmpty() && jumlah.isNotEmpty() && jenis.isNotEmpty(),
-                        modifier = Modifier.padding(8.dp)
-                    ) {
-                        Text(text = stringResource(id = R.string.simpan))
-                    }
+                        modifier = Modifier.padding(8.dp))
+                        {
+                            Text(text = stringResource(R.string.simpan))
+                        }
+
+
                 }
             }
         }
@@ -156,5 +184,34 @@ fun OptionClass(label: String, isSelected: Boolean, modifier: Modifier) {
                 modifier = Modifier.padding(start = 8.dp)
             )
         }
+    }
+}
+
+@Composable
+fun IconPickerOnline(isError: Boolean, unit: String){
+    if(isError){
+        Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
+    }else{
+        Text(text = unit)
+    }
+}
+
+
+@Composable
+fun ErrorhintTanggal(isError: Boolean){
+    if(isError){
+        Text(text = stringResource(R.string.input_invalid2))
+    }
+}
+@Composable
+fun ErrorhintJumlah(isError: Boolean){
+    if(isError){
+        Text(text = stringResource(R.string.input_invalid))
+    }
+}
+@Composable
+fun ErrorhintJEnis(isError: Boolean){
+    if(isError){
+        Text(text = stringResource(R.string.input_invalid))
     }
 }

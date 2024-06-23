@@ -11,7 +11,7 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="x_diklik">%1$s Clicked</string>
-    <string name="aboutApp">This application is a financial note-taking application. Considering the number of people who need a money tracking application, this application was created. The application was also developed to meet the requirements for the assessment 1 of the mobile programming course. All features and requirements have been adjusted to meet the criteria of this assessment.  This source code can be shared via GitHub. Link in WhatsApp. Press the button to share.</string>
+    <string name="aboutApp">This application is a financial note-taking application. Considering the number of people who need a money tracking application, this application was created. The application was also developed to meet the requirements for the assessment 3 of the mobile programming course. All features and requirements have been adjusted to meet the criteria of this assessment.  This source code can be shared via GitHub. Link in WhatsApp. Press the button to share.</string>
 
     <string name="tanggal">Date</string>
     <string name="jumlah">Ammount</string>

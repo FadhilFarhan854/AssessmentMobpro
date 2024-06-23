@@ -14,6 +14,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -61,6 +62,15 @@ fun DetailScreen(navController: NavHostController, id: Long? = null){
     var tanggal by remember { mutableStateOf("") }
     var  jumlah by remember { mutableStateOf("") }
     var jenis by remember { mutableStateOf("") }
+    var tanggalError by remember {
+        mutableStateOf(false)
+    }
+    var jumlahError by remember {
+        mutableStateOf(false)
+    }
+    var jenisError by remember {
+        mutableStateOf(false)
+    }
 
     var showDilaog by remember {
         mutableStateOf(false)
@@ -106,15 +116,9 @@ fun DetailScreen(navController: NavHostController, id: Long? = null){
                 ),
                 actions = {
                     IconButton(onClick = {
-                        if(tanggal == "" || jumlah == ""){
-                            Toast.makeText(context, R.string.input_invalid, Toast.LENGTH_LONG).show()
-                            return@IconButton
-                        }
-                        if(tanggal.length != 8 ){
-                            Toast.makeText(context, R.string.input_invalid2, Toast.LENGTH_LONG).show()
-                            return@IconButton
-                        }
-
+                        tanggalError = (tanggal == "" || tanggal.length > 10 || tanggal.length<8)
+                        jumlahError = (jumlah == "")
+                        if(tanggalError || jumlahError) return@IconButton
                         if(id == null){
                             viewModel2.insert(tanggal, jumlah, jenis)
                         }else{
@@ -151,7 +155,9 @@ fun DetailScreen(navController: NavHostController, id: Long? = null){
         jenis = jenis ,
         onJenisChanged = {jenis= it} ,
         radioOption = radioOption,
-        modifier = Modifier.padding(padding)
+        modifier = Modifier.padding(padding),
+                tanggalError = tanggalError,
+                jumlahError = jumlahError
     )
     }
 
@@ -162,25 +168,22 @@ fun FormCatatan(
     tanggal: String, onTanggalChange: (String) -> Unit,
     jumlah: String, onJumlahChange: (String) -> Unit,
     jenis: String, onJenisChanged: (String) -> Unit,
-    radioOption : List<String>,
-    modifier: Modifier
-){
-    val viewRadioOption: MainViewModel = viewModel()
-    val data = viewRadioOption
-    val radioOptions = data.optionArray
-    val selectedOpsi = if (radioOptions.indexOf(jenis) != -1)radioOptions.indexOf(jenis) else 0
+    radioOption: List<String>,
+    modifier: Modifier = Modifier,
+    tanggalError: Boolean,
+    jumlahError : Boolean
 
+) {
 
-    var kelasRadio by remember { mutableStateOf(radioOptions.getOrNull(selectedOpsi)) }
-    var option by remember { mutableStateOf(radioOptions[0]) }
-    Column(modifier = modifier
-        .fillMaxSize()
-        .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
     ) {
+
         OutlinedTextField(
             value = tanggal,
-            onValueChange = {onTanggalChange(it)},
+            onValueChange = { onTanggalChange(it) },
             label = { Text(text = stringResource(R.string.tanggal)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -188,19 +191,25 @@ fun FormCatatan(
                 imeAction = ImeAction.Next,
                 keyboardType = KeyboardType.Number,
             ),
-
-
+            isError = tanggalError,
+            trailingIcon = {IconPickerOffline(isError = tanggalError, unit ="" )},
+            supportingText ={ ErrorhintTanggalOffline(isError = tanggalError) } ,
+            modifier = Modifier.fillMaxWidth()
         )
         OutlinedTextField(
             value = jumlah,
-            onValueChange = {onJumlahChange(it)},
+            onValueChange = { onJumlahChange(it) },
             label = { Text(text = stringResource(R.string.jumlah)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Characters,
                 imeAction = ImeAction.Next,
                 keyboardType = KeyboardType.Number,
-            )
+            ),
+            isError = tanggalError,
+            trailingIcon = {IconPickerOffline(isError = tanggalError, unit ="" )},
+            supportingText ={ ErrorhintJumlahOffline(isError = tanggalError) } ,
+            modifier = Modifier.fillMaxWidth()
         )
         Column(
             modifier = Modifier
@@ -217,22 +226,19 @@ fun FormCatatan(
                             onClick = { onJenisChanged(text) },
                             role = Role.RadioButton
                         )
-
                         .padding(16.dp)
                 )
             }
         }
-
     }
 }
-
 
 
 @Composable
 fun KelasOpsi(label: String, isSelected: Boolean, modifier: Modifier) {
     Row(
         modifier = modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         if (isSelected){
             RadioButton(selected = true, onClick = null)
@@ -271,5 +277,26 @@ fun DeleteAction(delete: () -> Unit){
                 delete()})
         }
 
+    }
+}
+@Composable
+fun IconPickerOffline(isError: Boolean, unit: String){
+    if(isError){
+        Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
+    }else{
+        Text(text = unit)
+    }
+}
+
+@Composable
+fun ErrorhintTanggalOffline(isError: Boolean){
+    if(isError){
+        Text(text = stringResource(R.string.input_invalid2))
+    }
+}
+@Composable
+fun ErrorhintJumlahOffline(isError: Boolean){
+    if(isError){
+        Text(text = stringResource(R.string.input_invalid))
     }
 }
