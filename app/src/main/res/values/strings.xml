@@ -38,6 +38,7 @@
     <string name="logout">Logout</string>
     <string name="tambah_keuangan">Add Note</string>
     <string name="jenis">Income / Expense</string>
+    <string name="jenis_error">"  Choose type of notes (expense/income)"</string>
     <string name="offline_mode">Offline Mode</string>
 
 </resources>

@@ -36,5 +36,6 @@
     <string name="logout">Logout</string>
     <string name="tambah_keuangan">Tambah Keuangan</string>
     <string name="jenis">Pemasukan / Pengeluaran</string>
+    <string name="jenis_error">pilih jenis catatan (pengeluaran/pemasukan)</string>
     <string name="offline_mode">Mode offline</string>
 </resources>

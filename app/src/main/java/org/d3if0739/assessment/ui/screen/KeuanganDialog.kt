@@ -66,6 +66,9 @@ fun KeuanganDialog(
     var jumlahError by  remember{
         mutableStateOf(false)
     }
+    var jenisKeuangan by remember {
+        mutableStateOf("")
+    }
     Dialog(onDismissRequest = { onDismissRequest() }) {
         Card(
             modifier = Modifier.padding(16.dp),

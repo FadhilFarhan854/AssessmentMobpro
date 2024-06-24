@@ -5,11 +5,12 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
+import org.d3if0739.assessment.R
 import org.d3if0739.assessment.database.KeuanganDao
 import org.d3if0739.assessment.model.Keuangan
 
 class MainViewModel(dao: KeuanganDao) : ViewModel() {
-    val optionArray : Array<String> = arrayOf("Pemasukan", "Pengeluaran" )
+    val optionArray : Array<Any> = arrayOf(R.string.pemasukan, R.string.pengeluaran )
 
 
     val data: StateFlow<List<Keuangan>> = dao.getMahasiswa().stateIn(

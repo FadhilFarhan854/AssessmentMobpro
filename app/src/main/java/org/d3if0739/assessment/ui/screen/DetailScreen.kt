@@ -75,6 +75,12 @@ fun DetailScreen(navController: NavHostController, id: Long? = null){
     var showDilaog by remember {
         mutableStateOf(false)
     }
+    var pemasukan by remember {
+        mutableStateOf(R.string.pemasukan)
+    }
+    var pengeluaran by remember {
+        mutableStateOf(R.string.pengeluaran)
+    }
 
     LaunchedEffect(true){
         if(id == null) return@LaunchedEffect
@@ -84,9 +90,8 @@ fun DetailScreen(navController: NavHostController, id: Long? = null){
         jenis = data.jenis
     }
     val radioOption = listOf(
-        "Pemasukan",
-        "Pengeluaran"
-
+        stringResource(id = R.string.pemasukan),
+        stringResource(id = R.string.pengeluaran)
     )
 
     Scaffold(
@@ -119,6 +124,10 @@ fun DetailScreen(navController: NavHostController, id: Long? = null){
                         tanggalError = (tanggal == "" || tanggal.length > 10 || tanggal.length<8)
                         jumlahError = (jumlah == "")
                         if(tanggalError || jumlahError) return@IconButton
+                        if(jenis == ""){
+                            Toast.makeText(context, R.string.jenis_error, Toast.LENGTH_LONG).show()
+                            return@IconButton
+                        }
                         if(id == null){
                             viewModel2.insert(tanggal, jumlah, jenis)
                         }else{
